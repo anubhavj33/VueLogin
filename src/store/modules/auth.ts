@@ -12,7 +12,6 @@ const state = () => ({
     loginStatus:'' as string
 });
 
-//to access state
 const getters = {
     getLoginStatus(state:any):string{
         return state.loginStatus;
@@ -28,15 +27,9 @@ const getters = {
     },
 };
 
-  //calling async calls
     const actions = {
         async login({commit}:any,payload:any) {
             console.log(payload);
-            //  const data = {
-            //   //access_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QiLCJzdWIiOjIsImlhdCI6MTYwNDMwOTc0OSwiZXhwIjoxNjA0MzA5ODA5fQ.jHez9kegJ7GT1AO5A2fQp6Dg9A6PBmeiDW1YPaCQoYs",
-            //   access_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5hcnV0byIsInN1YiI6MSwiaWF0IjoxNjA4MjA2MTc5LCJleHAiOjM2MDE2MDgyMDYxNzl9.YvnHmz3TlgfK51yh4gEU9QcHJNmfoVSYT7nQzTfXaBs",
-            //   refresh_token: ""
-            //  }
             const newPayload = {
                 username:payload.username,
                 password:payload.password
@@ -59,8 +52,6 @@ const getters = {
   //state changer for state
     const mutations = {
     saveTokenData(state:any, data:any) {
-        // localStorage.setItem("access_token", data.access_token);
-        // localStorage.setItem("refresh_token", data.refresh_token);
 
         localStorage.setItem("access_token", JSON.stringify(data.jwt));
         localStorage.setItem("refresh_token", "");

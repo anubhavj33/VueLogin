@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeCom from '@/components/HomeCom.vue'
 import LoginCom from '@/components/LoginCom.vue'
 import RegisterCom from '@/components/RegisterCom.vue'
-import DashboardCom from '@/components/DashboardCom.vue'
+
 
 describe('NavCom.vue', () => {
     it('renders the correct navbar links', () => {
@@ -28,12 +28,6 @@ describe('NavCom.vue', () => {
                 name:'register',
                 component:RegisterCom,
                 meta:{authRequired:false}
-            },
-            {
-                path:'/dashboard',
-                name:'dashboard',
-                component:DashboardCom,
-                meta:{authRequired:true}
             }
         ],
     });

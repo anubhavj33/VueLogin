@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeCom from './components/HomeCom.vue'
 import LoginCom from './components/LoginCom.vue'
 import RegisterCom from './components/RegisterCom.vue'
-import DashboardCom from './components/DashboardCom.vue'
 import store from "./store/index";
 
 const routes = [
@@ -23,12 +22,6 @@ const routes = [
             name:'register',
             component:RegisterCom,
             meta:{authRequired:false}
-        },
-        {
-            path:'/dashboard',
-            name:'dashboard',
-            component:DashboardCom,
-            meta:{authRequired:true}
         }
     ];
 
@@ -38,10 +31,7 @@ export const routeConfig = createRouter({
 });
 
 routeConfig.beforeEach((to,from, next) => {
-    
-    //To Check authentication when user trying to access dashboard
-    //after closing the browser but check for access token stored 
-    //in local browse and save 
+ 
     const authData = store.getters["auth/getAuthData"];
     console.log("Check token When browser closed "+authData.token)
     if(!authData.token){
@@ -60,14 +50,7 @@ routeConfig.beforeEach((to,from, next) => {
     console.log("Authenticated "+isAuthenticated)
     if(to.fullPath === '/'){
         return next()
-    }//if user is authenticated and trying to access the login page 
-    //then let them access the dashboard
-    else if(isAuthenticated && !to.meta.authRequired){ 
-        console.log("You are authenticated You'll be redirected to dashboard page.")
-        return next({path:"/dashboard"})
     }
-    //if not authenticated and trying to access the dashboard page
-    //redirect to login page
     else if(!isAuthenticated && to.meta.authRequired){
         return next({path:"/login"})
     }

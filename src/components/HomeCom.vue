@@ -1,5 +1,5 @@
 <template>
-    <h3 data-test="testDiv">Hi! Home Page</h3>
+    <h3 data-test="testDiv">Hello User!</h3>
 </template>
 
 <script lang="ts">

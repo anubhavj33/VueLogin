@@ -26,7 +26,7 @@ export default defineComponent({
 }
 
 body {
-    background: #ffdb4d;
+    background: #4d4b46;
     min-height: 100vh;
     display: flex;
     font-weight: 400;

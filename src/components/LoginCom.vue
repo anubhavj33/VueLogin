@@ -43,11 +43,11 @@ export default defineComponent ({
         async loginHandler(){
             await this.actionLogin({username:this.username, password:this.password});
             if(this.getterLoginStatus === 'success'){
-                //alert('login success');
-                this.$router.push('/dashboard');
+                alert('login success');
+               
             }else{
                 this.invalidLogin = true
-                //alert('failed to login')
+                alert('failed to login')
             }
         }
     }
