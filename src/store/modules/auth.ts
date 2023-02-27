@@ -41,10 +41,11 @@ const getters = {
                 username:payload.username,
                 password:payload.password
             }
-            const response = await axios.post("http://localhost:3000/auth/login",newPayload)
+            const response = await axios.post("http://localhost:8080/authenticate",newPayload)
             .catch(err => {
             console.log(err)
             })
+            console.log(response)
             if(response && response.data){
                 commit('saveTokenData', response.data);
                 commit('setLoginStatus','success');
@@ -61,8 +62,8 @@ const getters = {
         // localStorage.setItem("access_token", data.access_token);
         // localStorage.setItem("refresh_token", data.refresh_token);
 
-        localStorage.setItem("access_token", JSON.stringify(data.access_token));
-        localStorage.setItem("refresh_token", JSON.stringify(data.refresh_token));
+        localStorage.setItem("access_token", JSON.stringify(data.jwt));
+        localStorage.setItem("refresh_token", "");
         
         console.log("Local Storage Access Token:"+localStorage.getItem("access_token"))
 
